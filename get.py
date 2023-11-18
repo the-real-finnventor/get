@@ -13,13 +13,16 @@ parser.add_argument('-v', '--verbose', action="store_true")
 
 args = parser.parse_args()
 
-try:
-    output = requests.get(args.url).text
-except requests.exceptions.MissingSchema:
-    exit(
-        f"Invalid URL '{args.url}': No scheme supplied. Perhaps you meant https://{args.url}?")
-except requests.exceptions.ConnectionError:
-    exit(f"404: URL not found")
+
+def set_output():
+    try:
+        return requests.get(args.url).text
+    except requests.exceptions.MissingSchema:
+        args.url = f"https://{args.url}"
+        return set_output()
+    except requests.exceptions.ConnectionError:
+        exit(f"404: URL not found")
+
 
 if args.output:
     if args.verbose:
