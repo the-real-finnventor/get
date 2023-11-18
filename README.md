@@ -33,13 +33,11 @@ options:
 
 ### Add the Manpage
 
-#### Probably does not work for any OS accept MacOS
+#### MacOS
 
--   Run `pwd` and remember or copy the output
--   Run `sudo nano /private/etc/man.conf`
--   Enter your password
--   Add to the bottom `MANPATH ` and then put the output from when you ran `pwd` earlier
--   Hold the control key and press `X`. Stop holding control and press `Y`. Press enter.
--   Now you can run `man get` and see the manual page for this program
+From the `get` directory, run:
+```
+echo "MANPATH $PWD" | sudo tee -a /private/etc/man.conf
+```
 
 ##### Note that this program has only been tested on MacOS Monterey 12.6.8
