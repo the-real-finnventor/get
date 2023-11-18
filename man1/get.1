@@ -1,0 +1,72 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "GET" "1" "November 2023" "" ""
+.
+.SH "NAME"
+\fBget\fR
+.
+.SH "NAME"
+get \- A program to get stuff from the world wide web
+.
+.SH "SYNOPSIS"
+\fBget [\-h] [\-o OUTPUT] [\-v] url\fR
+.
+.SH "DESCRIPTION"
+get is a program that gets a resource from the internet and either
+.
+.IP "\(bu" 4
+outputs it to that command line, or
+.
+.IP "\(bu" 4
+writes it to a file
+.
+.IP "" 0
+.
+.SH "EXAMPLES"
+To output to the command line:
+.
+.IP "" 4
+.
+.nf
+
+get https://example\.com
+.
+.fi
+.
+.IP "" 0
+.
+.P
+To write to a file:
+.
+.IP "" 4
+.
+.nf
+
+get \-o example\.file https://example\.com
+.
+.fi
+.
+.IP "" 0
+.
+.P
+To write to a file and output to the command line:
+.
+.IP "" 4
+.
+.nf
+
+get \-o example\.file \-v https://example\.com
+.
+.fi
+.
+.IP "" 0
+.
+.SH "AUTHOR"
+The Real Finnventor \fIfinnventor@everspaugh\.com\fR
+.
+.SH "SEE ALSO"
+insult
+.
+.P
+A MacOS command line program that speaks insults to your enemies \fIhttps://github\.com/the\-real\-finnventor/insult\fR
