@@ -12,14 +12,13 @@ parser.add_argument('-o', '--output')
 parser.add_argument('-v', '--verbose', action="store_true")
 
 args = parser.parse_args()
-
+if args.url.startswith("http://") == False and args.url.startswith("https://") == False:
+    args.url = f"https://{args.url}"
 try:
     output = requests.get(args.url).text
-except requests.exceptions.MissingSchema:
-    exit(
-        f"Invalid URL '{args.url}': No scheme supplied. Perhaps you meant https://{args.url}?")
 except requests.exceptions.ConnectionError:
     exit(f"404: URL not found")
+
 
 if args.output:
     if args.verbose:
@@ -33,3 +32,5 @@ if args.output:
             exit("Writing aborted!")
     with open(args.output, 'w') as f:
         f.write(output)
+else:
+    print(output)
